@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Novo livro - Cadastro de Livros{% endblock %}
+
+{% block body %}
+    <h1 class="h3 mb-3">Novo livro</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% include 'livro/_form.html.twig' with {'cancel_path': path('livro_index')} %}
+        </div>
+    </div>
+{% endblock %}

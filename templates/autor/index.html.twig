@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Autores - Cadastro de Livros{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0">Autores</h1>
+        <a href="{{ path('autor_new') }}" class="btn btn-primary">+ Novo autor</a>
+    </div>
+
+    {% if autores is empty %}
+        <div class="alert alert-info">Nenhum autor cadastrado ainda.</div>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle bg-white shadow-sm rounded">
+                <thead class="table-dark">
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th class="text-end">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for autor in autores %}
+                    <tr>
+                        <td>{{ autor.codAu }}</td>
+                        <td>{{ autor.nome }}</td>
+                        <td class="text-end text-nowrap">
+                            <a href="{{ path('autor_edit', {'id': autor.codAu}) }}" class="btn btn-sm btn-outline-secondary">Editar</a>
+                            <form method="post" action="{{ path('autor_delete', {'id': autor.codAu}) }}"
+                                  class="d-inline" onsubmit="return confirm('Excluir este autor?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete_autor_' ~ autor.codAu) }}">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}

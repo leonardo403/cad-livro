@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Livros - Cadastro de Livros{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3 mb-0">Livros</h1>
+        <a href="{{ path('livro_new') }}" class="btn btn-primary">+ Novo livro</a>
+    </div>
+
+    {% if livros is empty %}
+        <div class="alert alert-info">Nenhum livro cadastrado ainda.</div>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle bg-white shadow-sm rounded">
+                <thead class="table-dark">
+                <tr>
+                    <th>Código</th>
+                    <th>Título</th>
+                    <th>Editora</th>
+                    <th>Edição</th>
+                    <th>Ano</th>
+                    <th>Autores</th>
+                    <th>Assuntos</th>
+                    <th class="text-end">Valor</th>
+                    <th class="text-end">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for livro in livros %}
+                    <tr>
+                        <td>{{ livro.codl }}</td>
+                        <td>{{ livro.titulo }}</td>
+                        <td>{{ livro.editora ?? '—' }}</td>
+                        <td>{{ livro.edicao ?? '—' }}</td>
+                        <td>{{ livro.anoPublicacao ?? '—' }}</td>
+                        <td>
+                            {% for autor in livro.autores %}
+                                <span class="badge text-bg-secondary">{{ autor.nome }}</span>
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for assunto in livro.assuntos %}
+                                <span class="badge text-bg-info">{{ assunto.descricao }}</span>
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endfor %}
+                        </td>
+                        <td class="text-end">R$ {{ livro.valor|number_format(2, ',', '.') }}</td>
+                        <td class="text-end text-nowrap">
+                            <a href="{{ path('livro_edit', {'id': livro.codl}) }}" class="btn btn-sm btn-outline-secondary">Editar</a>
+                            <form method="post" action="{{ path('livro_delete', {'id': livro.codl}) }}"
+                                  class="d-inline" onsubmit="return confirm('Excluir este livro?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete_livro_' ~ livro.codl) }}">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}

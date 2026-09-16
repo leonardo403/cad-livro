@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar assunto - Cadastro de Livros{% endblock %}
+
+{% block body %}
+    <h1 class="h3 mb-3">Editar assunto</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% include 'assunto/_form.html.twig' with {'button_label': 'Atualizar', 'cancel_path': path('assunto_index')} %}
+        </div>
+    </div>
+{% endblock %}

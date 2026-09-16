@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">{{ button_label|default('Salvar') }}</button>
+        <a href="{{ cancel_path }}" class="btn btn-secondary">Cancelar</a>
+    </div>
+{{ form_end(form) }}

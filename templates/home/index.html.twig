@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Início - Cadastro de Livros{% endblock %}
+
+{% block body %}
+    <div class="py-4 text-center">
+        <h1 class="h3">Sistema de Cadastro de Livros</h1>
+        <p class="text-muted">Escolha uma das opções abaixo para começar.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-6 col-lg-3">
+            <a href="{{ path('livro_index') }}" class="card text-decoration-none h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="display-5 mb-2">📖</div>
+                    <h5 class="card-title">Livros</h5>
+                    <p class="card-text text-muted">Cadastrar e gerenciar os livros do acervo.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <a href="{{ path('autor_index') }}" class="card text-decoration-none h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="display-5 mb-2">✍️</div>
+                    <h5 class="card-title">Autores</h5>
+                    <p class="card-text text-muted">Cadastrar e gerenciar os autores.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <a href="{{ path('assunto_index') }}" class="card text-decoration-none h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="display-5 mb-2">🏷️</div>
+                    <h5 class="card-title">Assuntos</h5>
+                    <p class="card-text text-muted">Cadastrar e gerenciar os assuntos.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <a href="{{ path('relatorio_index') }}" class="card text-decoration-none h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="display-5 mb-2">📊</div>
+                    <h5 class="card-title">Relatório</h5>
+                    <p class="card-text text-muted">Livros agrupados por autor (via view no banco).</p>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endblock %}
