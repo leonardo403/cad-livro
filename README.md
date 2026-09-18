@@ -7,11 +7,10 @@ relatório de livros agrupado por autor, construído com **Symfony 8.1**, **PHP
 
 ## Funcionalidades
 
-- CRUD de **Livros** (inclui valor em R$, autores e assuntos);
+- CRUD de **Livros**;
 - CRUD de **Autores**;
 - CRUD de **Assuntos**;
-- **Relatório** de livros por autor (consulta feita em uma **view** do banco,
-  `vw_relatorio_livros`);
+- **Relatório** de livros por autor;
 - Tela inicial com menu, interface Bootstrap 5 e mensagens ao usuário.
 
 ## Como rodar
