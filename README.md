@@ -33,9 +33,3 @@ O MySQL também fica acessível em `127.0.0.1:3307` (usuário `app`, senha
 ```bash
 php bin/phpunit
 ```
-
-## Documentação
-
-Veja [DOCUMENTACAO.md](DOCUMENTACAO.md) para a explicação completa do sistema
-(banco de dados, fluxo de requisição, entidades, relatório, Docker e
-implantação).
